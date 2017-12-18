@@ -1,1 +1,4 @@
 *.pyc
+*.json
+Crawler/video/*
+Crawler/command_list.txt
