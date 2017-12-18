@@ -29,7 +29,7 @@ def crosscheck_videos(video_path, ann_file):
 def main(video_path, ann_file, output_filename):
     non_existing_videos = crosscheck_videos(video_path, ann_file)
     filename = os.path.join(video_path, "v_%s.mp4")
-    cmd_base = "youtube-dl -f best -f mp4 "
+    cmd_base = "youtube-dl --proxy socks5://127.0.0.1:1080/ -f best -f mp4 "
     cmd_base += '"https://www.youtube.com/watch?v=%s" '
     cmd_base += '-o "%s"' % filename
     with open(output_filename, "w") as fobj:
