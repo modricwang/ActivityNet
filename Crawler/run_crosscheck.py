@@ -1,7 +1,8 @@
-from argparse import ArgumentParser
 import glob
 import json
 import os
+from argparse import ArgumentParser
+
 
 def crosscheck_videos(video_path, ann_file):
     # Get existing videos
@@ -26,6 +27,7 @@ def crosscheck_videos(video_path, ann_file):
             non_existing_videos.append(vid)
     return non_existing_videos
 
+
 def main(video_path, ann_file, output_filename):
     non_existing_videos = crosscheck_videos(video_path, ann_file)
     filename = os.path.join(video_path, "v_%s.mp4")
@@ -36,6 +38,7 @@ def main(video_path, ann_file, output_filename):
         for vid in non_existing_videos:
             cmd = cmd_base % (vid, vid)
             fobj.write("%s\n" % cmd)
+
 
 if __name__ == "__main__":
     parser = ArgumentParser(description="Script to double check video content.")
